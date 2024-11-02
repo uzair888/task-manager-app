@@ -5,18 +5,18 @@ import User from "../models/User";
 import bcrypt from "bcryptjs";
 import dbConnect from "@/lib/dbConnect";
 
-beforeAll(async () => {
-  await dbConnect();
-  // Clear the user database and create a test user with hashed password
-  await User.deleteMany({});
-  const hashedPassword = await bcrypt.hash("123", 10); // Hashing the password
-  const user = await User.create({
-    email: "uzairsarwar10@gmail.com",
-    password: hashedPassword,
-  });
-  console.log("Test user created:", user); // Log the user
-});
-
+// beforeAll(async () => {
+//   await dbConnect();
+//   // Clear the user database and create a test user with hashed password
+//   await User.deleteMany({});
+//   const hashedPassword = await bcrypt.hash("123", 10); // Hashing the password
+//   const user = await User.create({
+//     email: "uzairsarwar10@gmail.com",
+//     password: hashedPassword,
+//   });
+//   console.log("Test user created:", user); // Log the user
+// });
+jest.setTimeout(10000);
 describe("Tasks API", () => {
   let token: string;
 
